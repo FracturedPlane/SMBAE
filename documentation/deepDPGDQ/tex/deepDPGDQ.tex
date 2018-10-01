@@ -1,0 +1,111 @@
+
+\documentclass[a4paper]{article}
+% \usepackage{thesis}
+% define the title
+\author{Glen Berseth}
+\title{Deep Deterministic Policy Gradient with Double-Q Learning.}
+
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xspace}
+\usepackage{named}
+\usepackage{hyperref}
+% \usepackage{cite}
+%\usepackage{jneurosci}
+% \usepackage{natbib}
+
+\usepackage{graphicx}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% \usepackage{algorithm2e}
+% \usepackage{algorithm}
+\usepackage{multirow}
+\usepackage{verbatim}
+\usepackage{soul}
+\usepackage{array}
+\setlength\extrarowheight{2pt} % or whatever amount is appropriate
+
+% I am having a hell of a time getting text colouring working in this document
+\usepackage[table]{xcolor}
+\usepackage{array,hhline}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+\usepackage{siunitx}
+% \sisetup{output-exponent-marker = E,round-mode = figures, round-precision = 3,
+%  scientific-notation = true}
+\sisetup{fixdp,dp=3}
+
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+% \input{fancey/highlighting}
+\input{project_newcommands}
+%\enumi
+\begin{document}
+
+% generates the title
+\maketitle
+% insert the table of contents
+% \tableofcontents
+
+
+\begin{algorithm}[h!]
+\caption{DDPG-DQ}
+\label{alg:DDPGDQ}
+\begin{algorithmic}[1]
+% \STATE{$\theta \leftarrow$ random weights}
+\STATE{Initialize $\networkParameters^{\critic_{B}}, \networkParameters^{\critic'_{A}}, \networkParameters^{\critic'_{B}} \leftarrow \networkParameters^{\critic_{A}}$ and $\networkParameters^{\actor_{B}}, \networkParameters^{\actor'_{A}}, \networkParameters^{\actor'_{B}} \leftarrow \networkParameters^{\actor_{A}}$}
+\STATE{Initialize Experience Memory, \ExperienceMemory}
+
+% \item[]
+\FOR{episode $1, ... , M$}
+	\STATE{init $\normalDistribution$ sampling distribution}
+	\FOR{$\ttime = 1,...,\MaxTime$}
+		\STATE{Choose action $\action_{\ttime}$ wrt $\critic(\state_{t}, \cdot|\networkParameters^{\critic_{A}})$, $\critic(\state_{t}, \cdot|\networkParameters^{\critic_{B}})$, i.e. whichever has a higher value}
+		
+		\STATE{$\action_{\ttime} \leftarrow \action_{\ttime} + \normalDistribution $ select an action according to current policy and exploration noise}
+		
+		\STATE{Execute action $\action_{\ttime}$ and observe reward $\reward_{\ttime}$ and observe new state $\state_{\ttime+1}$}
+		\STATE{Store Expereince tuple ($\state_{\ttime}$, $\action_{\ttime}$, $\reward_{\ttime}$ , $\state_{\ttime+1}$) in \ExperienceMemory.}
+		\STATE{Sample a random minibatch of $N$ transitions ($\state_{\ttime}$, $\action_{\ttime}$, $\reward_{\ttime}$ , $\state_{\ttime+1}$) from \ExperienceMemory}
+		
+		\STATE{Randomly choose $c$ from $\{A, B\}$}
+		\IF {$c == A $}
+			\STATE{Set $y_{i} \leftarrow \reward_{i} + \discountFactor \critic(\state_{\ttime+1}, \actor(\state_{\ttime+1}|\networkParameters^{\actor'_{A}})|\networkParameters^{\critic'_{B}})$
+					)}
+			
+			\STATE{Update critic by minimizing the loss: $L = \frac{1}{N} \sum\limits_{i}^{} (y_{i} - \critic(\state_{i}, \action_{i}|\networkParameters^{\critic_{A}} )^{2})$}
+			\STATE{Update the actor policy using the sampled gradient:}
+		\ELSE
+			\STATE{Set $y_{i} \leftarrow \reward_{i} + \discountFactor \critic(\state_{\ttime+1}, \actor(\state_{\ttime+1}|\networkParameters^{\actor'_{B}})|\networkParameters^{\critic'_{A}})$
+							)}
+			
+			\STATE{Update critic by minimizing the loss: $L = \frac{1}{N} \sum\limits_{i}^{} (y_{i} - \critic(\state_{i}, \action_{i}|\networkParameters^{\critic_{B}} )^{2})$}
+			\STATE{Update the actor policy using the sampled gradient:}
+		
+		\ENDIF
+		
+		\STATE{Update Target network parameters}
+		\STATE{$\networkParameters^{\critic'_{A}} \leftarrow  + \lerpWeight\networkParameters^{\critic_{A}} (1-\lerpWeight)\networkParameters^{\critic'_{A}}$}
+		\STATE{$\networkParameters^{\critic'_{B}} \leftarrow  + \lerpWeight\networkParameters^{\critic_{B}} (1-\lerpWeight)\networkParameters^{\critic'_{B}}$}
+		\STATE{$\networkParameters^{\actor'_{A}} \leftarrow  + \lerpWeight\networkParameters^{\actor_{A}} (1-\lerpWeight)\networkParameters^{\actor'_{A}}$}
+		\STATE{$\networkParameters^{\actor'_{B}} \leftarrow  + \lerpWeight\networkParameters^{\actor_{B}} (1-\lerpWeight)\networkParameters^{\actor'_{B}}$}
+	\ENDFOR
+\ENDFOR
+\end{algorithmic}
+
+\end{algorithm}
+
+
+\bibliographystyle{named}
+\bibliography{project}
+
+
+%\addcontentsline{toc}{chapter}{Appendix}
+% \input{report_appendix}
+
+\end{document}

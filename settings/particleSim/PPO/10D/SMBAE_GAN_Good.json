@@ -1,0 +1,263 @@
+{
+    "forward_dynamics_predictor": "network",
+    "use_actor_policy_action_variance_suggestion": false,
+    "use_parameterized_control": false,
+    "data_folder": "Nav_Sphere/10D/SMBAE_GAN/_train_forward_dynamics_True/",
+    "train_forward_dynamics": true,
+    "GAE_lambda": 0.95,
+    "target_velocity_decay": -2.0,
+    "regularization_type": "kl",
+    "ppo_use_seperate_nets": true,
+    "eval_epochs": 10,
+    "comment": "initial probability of selecting a discrete random action",
+    "look_ahead_planning_steps": 2,
+    "agent_name": "algorithm.PPO.PPO",
+    "reward_smoother": "gaussian",
+    "last_policy_layer_activation_type": "tanh",
+    "max_epoch_length": 128,
+    "forward_dynamics_model_type": "model.ForwardDynamicsDenseNetworkDropoutTesting.ForwardDynamicsDenseNetworkDropoutTesting",
+    "_last_std_policy_layer_activation_type": "sigmoid",
+    "debug_critic": false,
+    "rounds": 250,
+    "bootsrap_with_discrete_policy": true,
+    "visualize_learning": true,
+    "num_on_policy_rollouts": 5,
+    "forwardDynamics_config_file": "./settings/gapGame2D/ballgame_settings_gaps.json",
+    "sampling_method": "SequentialMC",
+    "use_guided_policy_search": false,
+    "epochs": 10,
+    "discrete_actions": [
+        [
+            -0.92,
+            0.8
+        ],
+        [
+            0.02,
+            0.0
+        ],
+        [
+            0.3,
+            0.5
+        ],
+        [
+            -0.4,
+            0.2
+        ],
+        [
+            0.8,
+            -0.9
+        ],
+        [
+            -0.7,
+            0.0
+        ],
+        [
+            0.7,
+            -0.6
+        ],
+        [
+            -0.5,
+            0.4
+        ],
+        [
+            -0.2,
+            0.2
+        ]
+    ],
+    "comment__": "Prevents the critic from including MBAE actions in it's policy estimation.",
+    "state_normalization": "given",
+    "use_back_on_track_forcing": false,
+    "give_mbae_actions_to_critic": false,
+    "reward_lower_bound": -10.5,
+    "num_mbae_steps": 1,
+    "load_saved_fd_model": false,
+    "dont_use_advantage": false,
+    "action_learning_rate": 0.5,
+    "num_uniform_action_samples": 3,
+    "visualize_forward_dynamics": false,
+    "collect_tuples_in_batches": false,
+    "on_policy": true,
+    "save_trainData": true,
+    "train_actor": true,
+    "keep_running_mean_std_for_scaling": false,
+    "epsilon": 1.0,
+    "use_stocastic_policy": true,
+    "epsilon_annealing": 0.8,
+    "critic_learning_rate": 0.0002,
+    "only_use_exp_actions_for_poli_updates": true,
+    "training_updates_per_sim_action": 1,
+    "train_state_encoding": false,
+    "controller_parameter_settings": {
+        "velocity_bounds": [
+            [
+                0.5
+            ],
+            [
+                2.5
+            ]
+        ]
+    },
+    "adaptive_samples": 5,
+    "use_multiple_policy_updates": true,
+    "model_based_action_omega": 0.2,
+    "bootstrap_samples": 1000,
+    "use_transfer_task_network": false,
+    "fd_learning_rate": 0.001,
+    "use_actor_policy_action_suggestion": true,
+    "fix_actor_batch_size": true,
+    "activation_type": "leaky_rectify",
+    "use_previous_value_regularization": false,
+    "discount_factor": 0.9,
+    "num_terrain_features": 0,
+    "critic_network_layer_sizes": [
+        128,
+        64,
+        32,
+        16
+    ],
+    "anneal_on_policy": false,
+    "training_processor_type": "cpu",
+    "num_adaptive_samples_to_keep": 50,
+    "rms_epsilon": 1e-06,
+    "regularization_weight": 0.0,
+    "average_parameter_change": 0.25,
+    "batch_size": 64,
+    "use_model_based_action_optimization": true,
+    "previous_value_regularization_weight": 0.01,
+    "controller_reward_weights": {
+        "torque": 0.05,
+        "root_height": 0.05,
+        "right_hand_x_pos": 0.0,
+        "velocity": 0.8,
+        "root_pitch": 0.1
+    },
+    "variance_scalling": 0.1,
+    "anneal_mbae": false,
+    "use_sampling_exploration": false,
+    "train_critic_on_fd_output": true,
+    "dropout_p": 0.1,
+    "optimizer": "adam",
+    "random_seed": 1234,
+    "reset_on_fall": true,
+    "disable_parameter_scaling": false,
+    "omega": 0.0,
+    "debug_actor": false,
+    "visualize_expected_value": true,
+    "model_type": "model.DeepNNAdaptive.DeepNNAdaptive",
+    "rho": 0.95,
+    "annealing_schedule": "log",
+    "train_gan_with_gaussian_noise": true,
+    "policy_network_layer_sizes": [
+        128,
+        64,
+        32
+    ],
+    "sim_config_file": "./settings/gapGame2D/ballgame_settings_gaps.json",
+    "print_level": "train",
+    "saving_update_freq_num_rounds": 10,
+    "override_sim_env_id": false,
+    "learning_rate": 0.0001,
+    "environment_type": "Particle_Sim",
+    "policy_loss_weight": 1.0,
+    "train_gan": true,
+    "load_saved_model": false,
+    "state_bounds": [
+        [
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0,
+            -10.0
+        ],
+        [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0
+        ]
+    ],
+    "keep_seperate_fd_exp_buffer": true,
+    "critic_updates_per_actor_update": 10,
+    "queue_size_limit": 30,
+    "save_experience_memory": true,
+    "shouldRender": true,
+    "steps_until_target_network_update": 10,
+    "exploration_method": "gaussian_network",
+    "plotting_update_freq_num_rounds": 1,
+    "critic_regularization_weight": 0.0,
+    "clamp_actions_to_stay_inside_bounds": false,
+    "target_velocity": 1.5,
+    "train_on_validation_set": false,
+    "kl_divergence_threshold": 0.1,
+    "use_GAE": true,
+    "clear_exp_mem_on_poli": true,
+    "normalize_advantage": true,
+    "train_critic": true,
+    "use_simulation_sampling": false,
+    "action_space_continuous": true,
+    "penalize_actions_outside_bounds": false,
+    "train_reward_predictor": true,
+    "use_fixed_std": true,
+    "print_levels": {
+        "debug": 1,
+        "hyper_train": -1,
+        "train": 0
+    },
+    "initial_temperature": 4.0,
+    "sim_action_per_training_update": 8,
+    "train_rl_learning": true,
+    "num_available_threads": 1,
+    "use_random_actions_for_MBAE": false,
+    "reward_bounds": [
+        [
+            -3.0
+        ],
+        [
+            3.0
+        ]
+    ],
+    "std_entropy_weight": 0.01,
+    "action_bounds": [
+        [
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2,
+            -1.2
+        ],
+        [
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2,
+            1.2
+        ]
+    ],
+    "float_type": "float64",
+    "expereince_length": 10000,
+    "randomize_MBAE_action_length": true,
+    "dyna_update_lag_steps": 5,
+    "exploration_rate": 1.0,
+    "min_epsilon": 0.2
+}

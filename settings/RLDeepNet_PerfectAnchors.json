@@ -1,0 +1,22 @@
+{
+"model_type": "Deep_NN2",
+"agent_name": "Deep_NN2",
+"data_folder": "RLDeepNet_PerfectAnchors_LOSS/",
+"epsilon": 1.0,
+"batch_size": 32,
+"learning_rate": 0.00025,
+"anchor_file": "../data/PerfectlyReachableAnchors-32.json",
+"sim_config_file": "../data/pendulumDiscreteActions/trainDiscreteActions.ini",
+"hidden_layer_size": 36,
+"num_actions": 9,
+"rounds": 1000,
+"epochs": 33,
+"num_states": 32,
+"discount_factor": 0.8,
+"max_reward": 50.0,
+"expereince_length": 25000,
+"state_bounds": [[-3.14, 1.0,-8.05,-8.5, -5.0, -5.5, -5.0],
+				 [ 3.14, 8.5, 5.00,  10.0, 5.0, 15.0,  5.0]],
+"action_space_continuous":false,
+"train_on_validation_set":true
+}

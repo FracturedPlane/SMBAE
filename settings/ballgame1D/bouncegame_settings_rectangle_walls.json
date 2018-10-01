@@ -1,0 +1,22 @@
+{
+"render": false,
+"terrain_type": "walls",
+"terrain_scale": 0.1,
+"body_shape": "rectangle",
+"body_shape_parameters": {
+						"width_x": 0.10,
+						"height_y": 0.27,
+						"depth_z": 0.2
+						},
+"num_terrain_samples": 200,
+"terrain_parameters": {
+						"gap_size": 5,
+						"gap_start": 5,
+						"comment": "Need to be careful here for state scaling will be 0-0/0",
+						"random_gap_width_range": [2,5],
+						"random_gap_start_range": [1,17],
+						"distance_till_next_gap": 20,
+						"terrain_change": 0.55,
+						"terrain_length": 1000
+					}
+}

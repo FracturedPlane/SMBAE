@@ -1,0 +1,118 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# IPython Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# dotenv
+.env
+
+# virtualenv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+
+# Rope project settings
+.ropeproject
+
+
+.gitmodules
+simbiconBiped2D/
+Imitate3D/
+ballgame_1d/
+gapgame_1d/
+simbiconBiped3D/
+ballgame_2d/
+simbiconBiped2DTerrain/
+gapgame_2d/
+pendulum_env/
+paperGibbon_env/
+pendulum_3D_env/
+paperGibbon/
+hopper_2D/
+mocapImitation2D/
+nav_Game/
+mocapImitation3D/
+data/
+open_AI_Gym/
+Particle_Sim/
+Particle_Sim_old/
+mocapImitation2D (2)/
+mocapImitation2D (3)/
+terrainRLImitateBiped2D/
+terrainRLHLCBiped3D/
+terrainRLImitateBiped3D/
+terrainRLSim/
+GymMultiChar/
