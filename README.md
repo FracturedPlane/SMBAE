@@ -5,23 +5,7 @@ on Lasagne which is based on Theano.
 
 ## Dependancies
 
- 1. sudo apt-get -y install liblapack3 liblapack-dev libblas3 libblas-dev gfortran libspqr1.3.1 libcholmod2.1.2 libmetis5 libmetis-dev libcolamd2.8.0 libccolamd2.8.0 libcamd2.3.1 libamd2.3.1 libx11-dev python-dev  
-     A bunch of math libraries that will be needed
- 2. pip install Theano  
-     This is the backbone of the learning framework.
- 3. pip install matplotlib  
-       Plotting things is great, especially while things are running
- 4. pip install Lasagne==0.1  
-      Makes creating neural networks easier
- 5. sudo pip install dill  
-     This will allow for some cool multi-processing later
- 6. sudo pip install pathos
-	 This library is nice update to the python multiprocessing library allowing
-for the pickeling of objects as well as other things.
- 7. apt-get -y install  swig3.0  
-	Swig is used to generate Python code that wraps the C++ code.
- 8. sudo pip install h5py  
-	This library is used to save and load data from files
+ 1. installDependanciesPython3.sh
 
 ## Install On Windows
 
@@ -48,9 +32,16 @@ As a temporary workaround, I use the following hack:
 ## Using The system
 
 ```
-python3 trainModel.py --config settings/particleSim/PPO/PPO.json
+python3 trainModel.py --config=settings/particleSim/PPO/PPO.json
 ```
-	
+
+### Running meta simulations
+
+These simulations are designed to sample a few simulations in order to get a more reasonable average of the performance of a method.
+
+```
+python3 tuneHyperParameters.py --config=tests/settings/particleSim/PPO/PPO_KERAS_Tensorflow.json --metaConfig=settings/hyperParamTuning/elementAI.json --meta_sim_samples=5 --meta_sim_threads=5 --tuning_threads=2
+```
 
 ## References
 
